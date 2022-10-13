@@ -1,0 +1,17 @@
+123456785412 //Đây là ID 12 chữ số
+Lê Văn Vũ    //Tên
+10000        //Số tiền
+VND          //Đơn vị tiền
+0            //Số lần nhập sai mật khẩu   
+
+222226785412
+Chúa tể bóng đêm
+99999999    
+USD        
+3 
+
+222326785412
+Chúa tể bóng tối
+100000000000  
+VND         
+1             

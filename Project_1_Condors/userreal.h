@@ -149,11 +149,11 @@ void giaoDienDangNhapUser() {
     do{
         system("cls");
         // sleep_for(10ns);
-        cout << "* * * * * * * * * * * * * * * * * * * * *\n";
-        cout << "*             DANG NHAP USER            *\n";
-        cout << "* * * * * * * * * * * * * * * * * * * * *\n";
-        cout << "ID : "; cin >> ID;
-        cout << "PIN : "; cin >> PIN;
+        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
+        cout << "\t\t\t\t*             DANG NHAP USER            *\n";
+        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
+        cout << "\t\t\t\tID : "; cin >> ID;
+        cout << "\t\t\t\tPIN : "; cin >> PIN;
         validateLogin = login_validation(ID,PIN);
 
         if(validateLogin)
@@ -171,10 +171,4 @@ void giaoDienDangNhapUser() {
         }
 
     }while(!validateLogin);
-}
-
-int main() {
-    giaoDienDangNhapUser();
-    system("pause");
-    return 0;
 }

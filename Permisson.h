@@ -4,8 +4,6 @@
 #include<stdlib.h>
 #include<windows.h>
 #include<string>
-#include<math.h>
-#include<iomanip>
 #include<stdio.h>
 #include<vector>
 #include<conio.h>
@@ -73,21 +71,18 @@ string createId() {
 }
 //Permisson
 
-void listUser() 
-{
+void listUser() {
 	string user;
 	int i = 0;
 	ifstream listFile("TheTu.txt");
-	while (getline(listFile, user)) 
-	{
+	while (getline(listFile, user)) {
 		i++;
 		cout << "User "<< i << " : " << user << "\n";
 	}
 	listFile.close();
 	int thoat;
 	cout << "Quay lai Menu(nhan phim 0 de quay lai) : ";cin >> thoat;
-	if (thoat == 0) 
-	{
+	if (thoat == 0) {
 		system("CLS");
 		adminMenu();
 	}
@@ -181,7 +176,8 @@ void adminMenu() {
 	}
 }
 
-void adminLogin() {
+void adminLogin() 
+{
 	string user[100];
     string pin[100];
     int i=0;
@@ -202,12 +198,12 @@ void adminLogin() {
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\t\t\t\t*\t\t  DANG NHAP ADMIN\t\t *\n";
 	cout << "\t\t\t\t**************************************************\n";
-	cout << "\n\t\t\t\tUser: ";
-	cin >> id;
+	cout << "\n\t\t\t\tUser: ";cin >> id;
     Pass(password);
-    for(int j=0; j<i; j++)
+    for(int j=0; j<=i; j++)
     {
        if(id==user[i] && password==pin[i]) right==true;   
+    }
     }
     while(right==false);
     adminMenu();

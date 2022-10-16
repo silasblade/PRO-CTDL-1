@@ -144,6 +144,7 @@ void deleteUser() {
 }
 
 void adminMenu() {
+	system("cls");
 	cout << "\t\t\t\t**************************Menu*************************\n";
 	cout << "\t \t \t\t\t\t1. Xem danh sach tai khoan.\n";
 	cout << "\t \t \t\t\t\t2. Them tai khoan.\n";
@@ -181,11 +182,13 @@ void adminMenu() {
 	}
 }
 
-void adminLogin() {
+void adminLogin() 
+{
 	string user[100];
     string pin[100];
     int i=0;
     ifstream is("Admin.txt");
+
     while(!is.eof())
     {
         getline(is, user[i]);
@@ -193,22 +196,30 @@ void adminLogin() {
         i++;
     }
     is.close();
-
-    bool right;
+    int right;
     do
     {
+	system("cls");
     string id, password;
-    right=false;
+    right=0;
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\t\t\t\t*\t\t  DANG NHAP ADMIN\t\t *\n";
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\n\t\t\t\tUser: ";
 	cin >> id;
     Pass(password);
-    for(int j=0; j<i; j++)
+    for(int j=0; j<=i; j++)
     {
-       if(id==user[i] && password==pin[i]) right==true;   
+       if(id==user[j] && password==pin[j]) right=1; 
+	   break;  
     }
-    while(right==false);
+	if(right==0) 
+	{
+	cout << endl;
+	cout << "\t\t\t\tNhap sai mat khau hoac tai khoan, vui long nhap lai." << endl;
+	system("pause");
+	}
+	}
+    while(right==0);
     adminMenu();
-};
+}

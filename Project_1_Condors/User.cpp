@@ -174,8 +174,6 @@ void giaoDienDangNhapUser() {
 }
 
 int main() {
-    cout << fixed << setw(30);
-    cout << "Hello" << endl;
     giaoDienDangNhapUser();
     system("pause");
     return 0;

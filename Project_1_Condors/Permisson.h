@@ -106,59 +106,140 @@ void listUser()
 
 }
 
+void listdel() 
+{
+	string user[100];
+    string pin[100];
+    int i=0;
+    ifstream is("TheTu.txt");
+	getline(is, user[0]);
+	getline(is, pin[0]);
+	i++;
+    while(!pin[i-1].empty())
+    {
+        getline(is, user[i]);
+        getline(is, pin[i]);
+        i++;
+    }
+    is.close();
+	cout << "\t\t\t\tDanh sach nguoi dung: " << endl;
+	cout << endl;
+
+	for(int k=1; k<i; k++)
+	{
+		cout << "\t\t\t\tUser " << k << "  :" << user[k-1] << endl;
+		cout << "\t\t\t\tPIN     :" << pin[k-1] << endl;
+		cout << endl;
+	}
+}
+
 void addNewUser() {
-	string id = createId();
-	string pin = "123456";
-	string log = "0";
-	string userFile = id + ".txt";
-	ofstream NewUser(userFile);
-	ofstream TheTu("TheTu.txt", ios_base::app);
-	NewUser << id <<endl<< pin <<endl <<log;
-	TheTu << id << " " << pin << endl;
-	NewUser.close();
-	TheTu.close();
-	cout << "Tao thanh cong\n";
+	system("cls");
+	cout << "\t\t\t\t**** Them nguoi dung moi ****" << endl;
+	string id;
+	cout << "\t\t\t\tTao ID (14 chu so): " << endl;
+	cin >> id;
+	string pin;
+    cout << "\t\t\t\tTao ma PIN (6 chu so): " << endl;
+	cin >> pin;
+	cout << "\t\t\t\tNhap ten nguoi dung: ";
+	string ten;
+	cin.ignore();
+	getline(cin, ten);
+	cout << "\t\t\t\tNhap so tien duoc nap vao ban dau (>=50000 VND): ";
+	string tien;
+	cin >> tien;
+	string donvi = "VND";
+	int solannhapsai = 0;
+
+    ofstream TheTu("TheTu.txt", ios_base::app);
+	TheTu << id << endl;
+	TheTu << pin << endl;
+    TheTu.close();
+
+	ofstream NewUser("ID_User/" + id + ".txt");
+	NewUser << id << endl;
+	NewUser << ten << endl;
+	NewUser << tien << endl;
+	NewUser << donvi << endl;
+	NewUser << solannhapsai << endl;
+    NewUser.close();
+
+	cout << "\t\t\t\tNguoi dung duoc tao thanh cong\n";
+	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
+	system("pause");
+    adminMenu();
 }
 
 void deleteUser() {
-	string id, user, getIdFile;
-	cout << "Quay lai Menu(nhan phim 0 de quay lai)\n";
-	cout << "Nhap id can xoa: ";cin >> id;
-	if (id.compare("0") == 0) {
-		system("CLS");
-		adminMenu();
-	}
-	else {
-		ifstream listFile("TheTu.txt");
-		ofstream User("NewTheTu.txt", ios_base::app);
-		while (getline(listFile, user)) {
-			getIdFile = user.substr(0, 14);
-			if (getIdFile == id) {
-				user = "";
-				User << user;
-			}
-			else {
-				User << user << endl;
-			}
-		}
-		User.close();
-		listFile.close();
-		remove("TheTu.txt");
-		rename("NewTheTu.txt", "TheTu.txt");
+	listdel();
 
-		id += ".txt";
-		char fileName[20];
-		strcpy_s(fileName, id.c_str());
-		if (remove(fileName) != 0)
-			cout << ("Loi xoa file!\nId ban can xoa khong ton tai");
-		else
-			cout << ("Xoa thanh cong");
+    string user[100];
+    string pin[100];
+    int i=0;
+    ifstream is("TheTu.txt");
+	getline(is, user[0]);
+	getline(is, pin[0]);
+	i++;
+    while(!pin[i-1].empty())
+    {
+        getline(is, user[i]);
+        getline(is, pin[i]);
+        i++;
+    }
+    is.close();
+
+
+    int checkdel=0;
+	int numdel;
+	string id;
+	cout << "\t\t\t\tNhap id can xoa: "; cin >> id;
+	for(int k=0; k<i-1; k++)
+	{
+		if(id==user[k]) {checkdel++; numdel=k;}
 	}
+
+    if(checkdel==0)
+	{
+		cout << "\t\t\t\tID ban nhap khong dung." << endl;
+		cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+		system("pause");
+		deleteUser();
+	}
+    
+	string addres="ID_User/";
+	addres=addres+id+".txt";
+	const char *c = addres.c_str();
+	remove(c);
+
+	ofstream updatett("TheTu.txt");
+	for(int j=0; j < numdel; j++)
+    {
+		updatett << user[j] << endl;
+		updatett << pin[j] << endl;
+	}
+
+	for(int n=numdel+1; n < i-1; n++)
+    {
+		updatett << user[n] << endl;
+		updatett << pin[n] << endl;
+	}
+	updatett.close();
+
+	cout << "\t\t\t\tBan da xoa thanh cong nguoi dung." << endl;
+	cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
+	cout << "\t\t\t\t1. Xoa nguoi dung tiep theo. " << endl;
+	cout << "\t\t\t\t2. Quay lai menu. " << endl;
+	cout << "\t\t\t\tChon:  " << endl;
+	int a;
+	cin >> a;
+	if(a==1) deleteUser();
+	if(a==2) adminMenu();
 }
 
 void adminMenu() {
 	system("cls");
-	cout << "\t\t\t\t**************************Menu*************************\n";
+	cout << "\t\t\t\t************************* Menu ************************\n";
 	cout << "\t \t \t\t\t\t1. Xem danh sach tai khoan.\n";
 	cout << "\t \t \t\t\t\t2. Them tai khoan.\n";
 	cout << "\t \t \t\t\t\t3. Xoa tai khoan.\n";
@@ -173,14 +254,8 @@ void adminMenu() {
 	switch(n){
 		case 1:
 			listUser();
-			system("CLS");
-			adminMenu();
 		case 2:
 			addNewUser();
-			cout << "\nDoi trong giay lat";
-			Sleep(2*1000);
-			system("CLS");
-			adminMenu();
 		case 3:
 			deleteUser();
 			cout << "\nDoi trong giay lat";

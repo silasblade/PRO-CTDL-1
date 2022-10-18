@@ -1,14 +1,16 @@
-#include <iostream>
 #include <fstream>
 
+#include<iostream>
+
 using namespace std;
-
-int main()
-{
-    ofstream os;
-
-    os.open("test.txt", ios::app);
-          os << "\n5" << endl;
-    os.close();
-
+int main() {
+ifstream myfile;
+string ad="123";
+myfile.open("ID_User/" + ad +  ".txt");
+if(!myfile) {
+cout<<"file exists";
+   } 
+   else {
+cout<<"file doesn't exist";
+   }
 }

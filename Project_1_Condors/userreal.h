@@ -12,10 +12,11 @@
 #include <vector>
 #include <sstream>
 
+
 string currentuser;
 
 #include "ruttien.h"
-
+#include "ttmapin.h"
 
 
 using namespace std;
@@ -60,6 +61,10 @@ public:
 };
 void ruttien();
 void giaoDienMenu();
+void chuyentien();
+void xemtt();
+void xemgd();
+void doimapin();
 
 bool login_validation(string ID, string pass) 
 {
@@ -149,15 +154,6 @@ void giaoDienDangNhapUser() {
 
 
 
-void chuyenTien() {
-    
-}
-void xemNoiDungGiaoDich() {
-    
-}
-void doiMaPin() {
-    
-}
 
 
 void Thoat() {
@@ -179,20 +175,20 @@ void giaoDienMenu() {
     cout << "\t\t\t\t************************************\n";
     cout << "\t\t\t\tChon chuc nang: "; int a; cin >> a;
     if (a == 1) {
-        // xemThongTinUser();
+        xemtt();
     }
     if (a == 2) 
     {
         ruttien();
     }
     if (a == 3) {
-        // chuyenTien();
+        chuyentien();
     }
     if (a == 4) {
-        // xemNoiDungGiaoDich();
+        xemgd();
     }
     if (a == 5) {
-        // doiMaPin();
+        doimapin();
     }
     if (a == 6) {
         giaoDienDangNhapUser();

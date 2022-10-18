@@ -74,22 +74,36 @@ string createId() {
 
 void listUser() 
 {
-	string user;
-	int i = 0;
-	ifstream listFile("TheTu.txt");
-	while (getline(listFile, user)) 
+	system("cls");
+	string user[100];
+    string pin[100];
+    int i=0;
+    ifstream is("TheTu.txt");
+	getline(is, user[0]);
+	getline(is, pin[0]);
+	i++;
+    while(!pin[i-1].empty())
+    {
+        getline(is, user[i]);
+        getline(is, pin[i]);
+        i++;
+    }
+    is.close();
+	cout << "\t\t\t\t**** Thong tin cac nguoi dung ****" << endl;
+	cout << endl;
+
+	for(int k=1; k<i; k++)
 	{
-		i++;
-		cout << "User "<< i << " : " << user << "\n";
+		cout << "\t\t\t\tUser " << k << "  :" << user[k-1] << endl;
+		cout << "\t\t\t\tPIN     :" << pin[k-1] << endl;
+		cout << endl;
 	}
-	listFile.close();
-	int thoat;
-	cout << "Quay lai Menu(nhan phim 0 de quay lai) : ";cin >> thoat;
-	if (thoat == 0) 
-	{
-		system("CLS");
-		adminMenu();
-	}
+
+	cout << "\t\t\t\tNhan phim bat ky de quay lai menu." << endl;
+	cout << "\t\t\t\t";
+	system("pause");
+	adminMenu();
+
 }
 
 void addNewUser() {
@@ -174,33 +188,31 @@ void adminMenu() {
 			system("CLS");
 			adminMenu();
 		case 5:
-			cout << "Doi trong giay lat";
-			Sleep(2 * 1000);
-			system("CLS");
 			adminLogin();
 	}
 }
 
 void adminLogin() 
 {
+	system("cls");
 	string user[100];
     string pin[100];
     int i=0;
     ifstream is("Admin.txt");
+	getline(is, user[0]);
+	getline(is, pin[0]);
+	i++;
 
-    while(!is.eof())
+    while(!pin[i-1].empty())
     {
         getline(is, user[i]);
         getline(is, pin[i]);
         i++;
     }
     is.close();
-    int right;
-    do
-    {
+
 	system("cls");
     string id, password;
-    right=0;
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\t\t\t\t*\t\t  DANG NHAP ADMIN\t\t *\n";
 	cout << "\t\t\t\t**************************************************\n";
@@ -208,18 +220,17 @@ void adminLogin()
 	cout << "\n\t\t\t\tPassword: ";
 	
     Pass(password);
-    for(int j=0; j<=i; j++)
+
+    for(int j=0; j<i; j++)
     {
-       if(id==user[j] && password==pin[j]) right=1; 
-	   break;  
+       if(id==user[j] && password==pin[j]) adminMenu();
     }
-	if(right==0) 
-	{
+
 	cout << endl;
 	cout << "\t\t\t\tNhap sai mat khau hoac tai khoan, vui long nhap lai." << endl;
+	cout << "\t\t\t\t";
 	system("pause");
-	}
-	}
-    while(right==0);
-    adminMenu();
+	adminLogin();
+	
+	
 }

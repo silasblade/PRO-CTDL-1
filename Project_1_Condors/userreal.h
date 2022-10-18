@@ -1,12 +1,26 @@
+#pragma once
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
 #include <algorithm>
 #include <math.h>
 #include <fstream>
+#include <vector>
+#include "Permisson.h"
+#include <cstdlib>
+#include <ctime> 
+#include <vector>
+#include <sstream>
+
+string currentuser;
+
+#include "ruttien.h"
+
+
 
 using namespace std;
 int u = 1;
+
 
 class UserInfo {
 private:
@@ -44,6 +58,8 @@ public:
         return os;
     }
 };
+void ruttien();
+void giaoDienMenu();
 
 bool login_validation(string ID, string pass) 
 {
@@ -68,6 +84,42 @@ bool login_validation(string ID, string pass)
     }
     
 }
+
+void giaoDienDangNhapUser() {
+    string ID, PIN;
+    int dem = 0;
+    
+    bool validateLogin;
+    do{
+        system("cls");
+        // sleep_for(10ns);
+        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
+        cout << "\t\t\t\t*             DANG NHAP USER            *\n";
+        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
+        cout << "\t\t\t\tID : "; cin >> ID;
+        cout << "\t\t\t\tPIN : "; Pass(PIN);
+        validateLogin = login_validation(ID,PIN);
+
+        if(validateLogin)
+        {
+            currentuser=ID;
+            giaoDienMenu();
+        }
+        else {
+            dem++;
+            cout << "Ban da nhap sai tai khoan, hoac ma PIN. Vui long dang nhap lai\n";
+            if (dem == 3) {
+                cout << "Tai khoan ban da bi khoa\n";
+			    exit(0);
+            }
+            system("pause");
+        }
+
+    }while(!validateLogin);
+}
+
+
+
 // UserInfo arrInfo[10000];
 // void layDuLieuThongTinUser() {
 //     ifstream Info;
@@ -94,9 +146,9 @@ bool login_validation(string ID, string pass)
 //         cout << arrInfo[i] << endl;
 //     }
 // }
-void rutTien() {
-    
-}
+
+
+
 void chuyenTien() {
     
 }
@@ -106,26 +158,32 @@ void xemNoiDungGiaoDich() {
 void doiMaPin() {
     
 }
+
+
 void Thoat() {
-    cout << "Cam on ban da su dung";
-    exit(0);
+    giaoDienDangNhapUser();
 }
+
+#include "ruttien.h"
+
 void giaoDienMenu() {
     system("cls");
+    cout << "\t\t\t\t";
     cout << "***************MENU*****************\n";
-    cout << "      1. Xem thong tin tai khoan\n";
-    cout << "      2. Rut tien\n";
-    cout << "      3. Chuyen tien\n";
-    cout << "      4. Xem noi dung giao dich\n";
-    cout << "      5. Doi ma pin\n";
-    cout << "      6. Thoat\n";
-    cout << "************************************";
-    cout << "\nChon chuc nang: "; int a; cin >> a;
+    cout << "\t\t\t\t      1. Xem thong tin tai khoan\n";
+    cout << "\t\t\t\t      2. Rut tien\n";
+    cout << "\t\t\t\t      3. Chuyen tien\n";
+    cout << "\t\t\t\t      4. Xem noi dung giao dich\n";
+    cout << "\t\t\t\t      5. Doi ma pin\n";
+    cout << "\t\t\t\t      6. Thoat\n";
+    cout << "\t\t\t\t************************************\n";
+    cout << "\t\t\t\tChon chuc nang: "; int a; cin >> a;
     if (a == 1) {
         // xemThongTinUser();
     }
-    if (a == 2) {
-        // rutTien();
+    if (a == 2) 
+    {
+        ruttien();
     }
     if (a == 3) {
         // chuyenTien();
@@ -137,38 +195,8 @@ void giaoDienMenu() {
         // doiMaPin();
     }
     if (a == 6) {
-        Thoat();
+        giaoDienDangNhapUser();
     }
 }
 
-void giaoDienDangNhapUser() {
-    string ID, PIN;
-    int dem = 0;
-    
-    bool validateLogin;
-    do{
-        system("cls");
-        // sleep_for(10ns);
-        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
-        cout << "\t\t\t\t*             DANG NHAP USER            *\n";
-        cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
-        cout << "\t\t\t\tID : "; cin >> ID;
-        cout << "\t\t\t\tPIN : "; cin >> PIN;
-        validateLogin = login_validation(ID,PIN);
-
-        if(validateLogin)
-        {
-            giaoDienMenu();
-        }
-        else {
-            dem++;
-            cout << "Ban da nhap sai tai khoan, hoac ma PIN. Vui long dang nhap lai\n";
-            if (dem == 3) {
-                cout << "Tai khoan ban da bi khoa\n";
-			    exit(0);
-            }
-            system("pause");
-        }
-
-    }while(!validateLogin);
-}
+#include "ruttien.h"

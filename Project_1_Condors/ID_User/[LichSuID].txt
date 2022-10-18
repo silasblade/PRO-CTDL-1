@@ -1,10 +1,12 @@
 Thu Oct 13 11:12:33 2022 //Thời gian
-123456785412             //ID người cho tiền
+123                      //ID người cho tiền
 Le Van Vu                //Tên người chuyển
 +10000 VND               //Số tiền được nhận
-
+<Nhan tien>
 
 Thu Oct 13 11:15:40 2022
 222226785412
 Chúa tể bóng đêm
 -10000 VND               //Số tiền bị trừ
+<Chuyen tien>
+

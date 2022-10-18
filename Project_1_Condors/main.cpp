@@ -1,11 +1,11 @@
 #include"Permisson.h"
 #include"Access.h"
 #include"userreal.h"
+#include "ruttien.h"
 #include <iomanip>
+
 using namespace std;
 
-string currentuser;
-string currentadmin;
 
 int main() 
 {

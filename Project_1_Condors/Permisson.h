@@ -20,7 +20,6 @@ void adminLogin();
 void Pass(string &password){
 	string P;
 	char p;
-	cout << "\n\t\t\t\tPassword: ";
 	p = _getch();
 	while (p != 13)
 	{
@@ -205,8 +204,9 @@ void adminLogin()
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\t\t\t\t*\t\t  DANG NHAP ADMIN\t\t *\n";
 	cout << "\t\t\t\t**************************************************\n";
-	cout << "\n\t\t\t\tUser: ";
-	cin >> id;
+	cout << "\n\t\t\t\tUser: "; cin >> id;
+	cout << "\n\t\t\t\tPassword: ";
+	
     Pass(password);
     for(int j=0; j<=i; j++)
     {

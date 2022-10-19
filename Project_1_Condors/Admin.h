@@ -1,18 +1,10 @@
 #pragma once
-#include<iostream>
-#include<fstream>
-#include<stdlib.h>
-#include<windows.h>
-#include<string>
-#include<math.h>
-#include<iomanip>
-#include<stdio.h>
-#include<vector>
-#include<conio.h>
+#include"lib.h"
+#include"lock.h"
 
 using namespace std;
 
-
+void moKhoaTaiKhoan();
 void adminMenu();
 void adminLogin();
 void Pass(string &password){
@@ -174,9 +166,13 @@ void deleteUser() {
     
 	string addres="ID_User/";
 	addres=addres+id+".txt";
+	string lichsu="ID_User/LichSu";
+	lichsu=lichsu+id+".txt";
 	const char *c = addres.c_str();
+	const char *d = lichsu.c_str();
 	remove(c);
-
+    remove(d);
+	
 	ofstream updatett("TheTu.txt");
 	for(int j=0; j < numdel; j++)
     {
@@ -223,10 +219,8 @@ void adminMenu() {
 			addNewUser();
 		case 3:
 			deleteUser();
-			cout << "\nDoi trong giay lat";
-			Sleep(2 * 1000);
-			system("CLS");
-			adminMenu();
+		case 4:
+		    moKhoaTaiKhoan();
 		case 5:
 			adminLogin();
 	}

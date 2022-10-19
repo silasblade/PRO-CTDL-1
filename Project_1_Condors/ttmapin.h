@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <Windows.h>
+#include "lib.h"
 #include "User.h"
 using namespace std;
 

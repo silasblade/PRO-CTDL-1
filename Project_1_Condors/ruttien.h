@@ -1,17 +1,8 @@
 
 #pragma once
-#include <iostream>
-#include <iomanip>
-#include <Windows.h>
-#include <algorithm>
-#include <math.h>
-#include <fstream>
-#include <vector>
+#include "lib.h"
 #include "Admin.h"
-#include <cstdlib>
-#include <ctime> 
-#include <vector>
-#include <sstream>
+
 
 #include "User.h"
 

@@ -92,13 +92,40 @@ void listdel()
 
 void addNewUser() {
 	system("cls");
+
+    string u[100];
+    string p[100];
+    int i=0;
+    ifstream is("TheTu.txt");
+	getline(is, u[0]);
+	getline(is, p[0]);
+	i++;
+	while(!p[i-1].empty())
+    {
+        getline(is, u[i]);
+        getline(is, p[i]);
+        i++;
+    }
+    is.close();
+
+
 	cout << "\t\t\t\t**** Them nguoi dung moi ****" << endl;
 	string id;
-	cout << "\t\t\t\tTao ID (14 chu so): " << endl;
+	cout << "\t\t\t\tTao ID (14 chu so): ";
 	cin >> id;
+    
+    for(int k=0; k<i-1; k++)
+	{
+		if(id==u[k])
+		{
+			cout << "\t\t\t\tID da ton tai, vui long nhap lai. Nhan Enter de tiep tuc." << endl;
+			system("pause");
+			addNewUser();
+		}
+	}
+
 	string pin;
-    cout << "\t\t\t\tTao ma PIN (6 chu so): " << endl;
-	cin >> pin;
+	pin="123456";
 	cout << "\t\t\t\tNhap ten nguoi dung: ";
 	string ten;
 	cin.ignore();

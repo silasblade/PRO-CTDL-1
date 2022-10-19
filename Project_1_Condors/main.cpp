@@ -1,6 +1,5 @@
-#include"Permisson.h"
-#include"Access.h"
-#include"userreal.h"
+#include"Admin.h"
+#include"User.h"
 #include "ruttien.h"
 #include "ttmapin.h"
 #include <iomanip>

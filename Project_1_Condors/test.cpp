@@ -1,10 +1,10 @@
 #include <fstream>
-
+#include <string>
 #include<iostream>
 
 using namespace std;
 int main() 
 {
-  ifstream is("LichSu123.txt");
-  remove(is);
+  int a;
+  getline(cin, a);
 }

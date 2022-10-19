@@ -7,13 +7,13 @@
 #include <math.h>
 #include <fstream>
 #include <vector>
-#include "Permisson.h"
+#include "Admin.h"
 #include <cstdlib>
 #include <ctime> 
 #include <vector>
 #include <sstream>
 
-#include "userreal.h"
+#include "User.h"
 
 using namespace std;
 

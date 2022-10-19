@@ -9,13 +9,11 @@
 #include<stdio.h>
 #include<vector>
 #include<conio.h>
-#include"User.h"
 
 using namespace std;
 
 
 void adminMenu();
-void userMenu();
 void adminLogin();
 void Pass(string &password){
 	string P;
@@ -37,40 +35,7 @@ void Pass(string &password){
 	}
 }
 
-string createId() {
-	static const char alphanum[] = "0123456789";
-	string id = "10000";
-	string n;
-	cout << "Tao id moi(9 So) : "; cin >> n;
-	if (n.length() < 9 || n.length()>9) {
-		cout << "\nId khong hop le. Moi tao lai.";
-		Sleep(2*1000);
-		system("CLS");
-		createId();
-	}
-	id += n;
-	string User;
-	string list[100];
-	int i = 0;
-	ifstream listFile("TheTu.txt");
-	while (getline(listFile, User)) {
-		string getIdFile = User.substr(0, 14);
-		list[i] = getIdFile;
-		i++;
-	}
-	listFile.close();
-	for (int j = 0;j < i+1;j++) {
-		if (id == list[j]) {
-			cout << "\nId da ton tai. Nhap Id Khac";
-			Sleep(2 * 1000);
-			system("CLS");
-			createId();
-		}
-	}
 
-	return id;
-}
-//Permisson
 
 void listUser() 
 {

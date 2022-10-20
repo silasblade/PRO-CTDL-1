@@ -8,23 +8,34 @@ void moKhoaTaiKhoan();
 void adminMenu();
 void adminLogin();
 void Pass(string &password){
-	string P;
-	char p;
-	p = _getch();
-	while (p != 13)
-	{
-		if (p == 8)
+	int ch;
+	int i=0;
+    ch=getch();
+    while(ch!=13)
+    {
+        password.push_back(ch);
+        if(ch==8 && i>0)
+        {
+		i--;
+        cin.clear();
+        cout << '\b';
+        cout << " ";
+        cout << '\b';
+        }
+
+		else if(ch==8 && i==0)
 		{
-			P.resize(P.length() - 1);
-			cout << P;
-			password.resize(password.length() - 1);
+			cin.clear();
 		}
-		else {
-			cout << "*";
-			password.push_back(p);
+
+        else
+		{
+		i++;
+        cout << "*";
 		}
-		p = _getch();
-	}
+        ch=getch();
+		
+    }
 }
 
 

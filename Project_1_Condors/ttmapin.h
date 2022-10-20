@@ -21,6 +21,7 @@ void xemtt()
   cout << "\t\t\t\tSo du: " << x[2] << " " << x[3] << endl;
   cout << endl;
   cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
+  cout << "\t\t\t\t";
   system("pause");
   giaoDienMenu();
 }
@@ -76,10 +77,35 @@ void doimapin()
   }
   is.close();
   cout << "\t\t\t\t**** Doi maPIN ****" << endl;
-  cout << "\t\t\t\tNhap ma pin moi: ";
+  cout << "\t\t\t\tNhap ma pin moi (6 so): ";
   string newpin;
   string newpinconfirm;
   cin >> newpin;
+  
+
+  if(newpin.size()!=6)
+  {
+    cout << "\t\t\t\tBan nhap khong dung." << endl;
+    cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+    cout << "\t\t\t\t";
+    system("pause");
+    doimapin();
+  }
+
+  int checkdigit=0;
+  for(int o=0; o<newpin.size(); o++)
+  {
+    if(!isdigit(newpin[0])) checkdigit++;
+  }
+  
+  if(checkdigit!=0)
+  {
+    cout << "\t\t\t\tMa PIN chi duoc nhap so." << endl;
+    cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+    system("pause");
+    doimapin();
+  }
+
   cout << "\t\t\t\tNhap lai ma PIN moi: ";
   cin >> newpinconfirm;
 
@@ -103,11 +129,12 @@ void doimapin()
   {
     cout << "\t\t\t\tBan nhap khong dung." << endl;
     cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+    cout << "\t\t\t\t";
     system("pause");
     doimapin();
   }
   
-  cout << "\t\t\t\tBBan da doi ma PIN thanh cong." << endl;
+  cout << "\t\t\t\tBan da doi ma PIN thanh cong." << endl;
   cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
   cout << "\t\t\t\t";
   system("pause");

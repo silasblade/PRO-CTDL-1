@@ -10,7 +10,7 @@ using namespace std;
 
 void giaoDienMenu();
 
-void lsgd(string idgd, float sotien, string phuongthuc, string ten, string donvi, string idnggd)
+void lsgd(string idgd, double sotien, string phuongthuc, string ten, string donvi, string idnggd)
 {
     time_t now = time(0);
     char* dt = ctime(&now);
@@ -50,15 +50,16 @@ void ruttien()
     is.close();
     stringstream cre;
     cre << x[3];
-    float credit;
+    double credit;
     cre >> credit;
     cout << "\t\t\t\tSo du tai khoan cua ban la: " << x[3] << " " << x[4] << endl;
 
     //Dieu kien rut tien
-    if(credit < 50000 && x[4]=="VND")
+    if(credit < 100000 && x[4]=="VND")
     {
     cout << "\t\t\t\tTai khoan cua ban khong du de rut" << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
+    cout << "\t\t\t\t";
     system("pause");
     giaoDienMenu();
     }
@@ -67,23 +68,25 @@ void ruttien()
     {
     cout << "\t\t\t\tTai khoan cua ban khong du de rut" << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
+    cout << "\t\t\t\t";
     system("pause");
     giaoDienMenu();
     }
 
     //Thuc hien rut tien
     cout << "\t\t\t\tNhap so tien muon rut: ";
-    float rut=0;
+    double rut=0;
     cin >> rut;
     long tienle=rut;
     if(tienle % 50000 !=0 || rut <50000)
     {
         cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan Enter roi tien hanh nhap lai." << endl;
+        cout << "\t\t\t\t";
         system("pause");
         ruttien();
     }
     cout << "\t\t\t\tBan da rut " << rut << " " << x[4] << " khoi tai khoan." << endl;
-    float conlai;
+    double conlai;
     conlai=credit - rut;
     stringstream con;
     con << conlai;
@@ -98,17 +101,13 @@ void ruttien()
         os << x[i] << endl;
     }
     os.close();
-
-    
-
-    cout <<"\t\t\t\tChon chuc nang:" << endl;
-    cout <<"\t\t\t\t1. De rut tien lan nua" << endl;
-    cout <<"\t\t\t\t2. De tro lai menu" << endl;
-    cout <<"\t\t\t\tChon: ";
-    int choose;
-    cin >> choose;
-    if(choose==1) ruttien();
-    if(choose==2) giaoDienMenu();
+   
+   cout << endl;
+   cout << "\t\t\t\tBan da rut tien thanh cong." << endl;
+   cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
+   cout << "\t\t\t\t";
+   system("pause");
+   giaoDienMenu();
 }
 
 void chuyentien()
@@ -127,23 +126,25 @@ void chuyentien()
     is.close();
     stringstream cre;
     cre << x[3];
-    float credit;
+    double credit;
     cre >> credit;
     cout << "\t\t\t\tSo du tai khoan cua ban la: " << x[3] << " " << x[4] << endl;
 
     //Dieu kien rut tien
-    if(credit < 50000 && x[4]=="VND")
+    if(credit < 100000 && x[4]=="VND")
     {
     cout << "\t\t\t\tTai khoan cua ban khong du de chuyen." << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
+    cout << "\t\t\t\t";
     system("pause");
     giaoDienMenu();
     }
 
     if(credit < 2.1 && x[4]=="USD")
     {
-    cout << "\t\t\t\tTai khoan cua ban khong du de rut" << endl;
+    cout << "\t\t\t\tTai khoan cua ban khong du de chuyen" << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
+    cout << "\t\t\t\t";
     system("pause");
     giaoDienMenu();
     }
@@ -152,6 +153,15 @@ void chuyentien()
     cout << "\t\t\t\tNhap ID nguoi ban muon chuyen tien: ";
     string tranuser;
     cin >> tranuser;
+
+    if(currentuser==tranuser)
+    {
+    cout << "\t\t\t\tBan khong the tu chuyen tien cho chinh minh." << endl;
+    cout << "\t\t\t\tVui long nhap lai." << endl;
+    cout << "\t\t\t\t";
+    system("pause");
+    chuyentien();
+    }
 
     //Kiem tra ton tai tai khoan
     ifstream is2;
@@ -165,6 +175,7 @@ void chuyentien()
     {
     cout << "\t\t\t\tID khong ton tai." << endl;
     cout << "\t\t\t\tVui long nhap lai." << endl;
+    cout << "\t\t\t\t";
     system("pause");
     chuyentien();
     is2.close();
@@ -179,12 +190,12 @@ void chuyentien()
     is2.close();
     stringstream trancre;
     trancre << y[3];
-    float nhantien;
+    double nhantien;
     trancre >> nhantien;
 
     //Thuc hien rut tien
     cout << "\t\t\t\tNhap so tien muon chuyen: ";
-    float chuyen=0;
+    double chuyen=0;
     cin >> chuyen;
     long tienchuyen=chuyen;
     if(tienchuyen % 50000 !=0 || chuyen <50000)
@@ -195,9 +206,9 @@ void chuyentien()
     }
 
     cout << "\t\t\t\tBan da chuyen " << chuyen << " " << x[4] << " toi cho " << y[2] << endl;
-    float conlai;
+    double conlai;
     conlai=credit - chuyen;
-    float tiennhan;
+    double tiennhan;
     tiennhan=nhantien + chuyen;
     stringstream con;
     con << conlai;
@@ -225,14 +236,11 @@ void chuyentien()
     }
     os.close();
 
-    
 
-    cout <<"\t\t\t\tChon chuc nang:" << endl;
-    cout <<"\t\t\t\t1. De chuyen tien lan nua" << endl;
-    cout <<"\t\t\t\t2. De tro lai menu" << endl;
-    cout <<"\t\t\t\tChon: ";
-    int choose;
-    cin >> choose;
-    if(choose==1) chuyentien();
-    if(choose==2) giaoDienMenu();
+   cout << endl;
+   cout << "\t\t\t\tBan da chuyen tien thanh cong." << endl;
+   cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
+   cout << "\t\t\t\t";
+   system("pause");
+   giaoDienMenu();
 }

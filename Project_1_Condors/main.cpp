@@ -10,6 +10,7 @@ using namespace std;
 int main() 
 {
 cout << fixed << setw(30);
+cout << fixed << setprecision(2);
 string chon;
 do
 {

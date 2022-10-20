@@ -174,19 +174,29 @@ void addNewUser() {
 	NewUser << solannhapsai << endl;
     NewUser.close();
 
-	cout << "\t\t\t\tNguoi dung duoc tao thanh cong\n" << endl;
-	cout << "\t\t\t\t________________________________" << endl;
-	cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
-    cout << "\t\t\t\t1. Them nguoi dung tiep theo." << endl;
-    cout << "\t\t\t\t2. Ve menu." << endl;
-    cout << "\t\t\t\tNhap: ";
-    int chon;
-    cin >> chon;
-    if(chon==1) moKhoaTaiKhoan();
-    if(chon==2) adminMenu();
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    string lsmoi="LichSu";
+	lsmoi=lsmoi+id;
+	ofstream newLS("ID_User/" + lsmoi + ".txt");
+	newLS << dt;
+	newLS << id << endl;
+	newLS << ten << endl;
+	newLS << "50000 VND" << endl;
+	newLS << "<TAO TAI KHOAN>" << endl;
+	newLS << "\n";
+	newLS.close();
+
+    cout << endl;
+	cout << "\t\t\t\tNguoi dung duoc tao thanh cong!!!" << endl;
+	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
+	cout << "\t\t\t\t";
+	system("pause");
+    adminMenu();
 }
 
 void deleteUser() {
+	system("cls");
 	listdel();
 
     string user[100];
@@ -244,16 +254,13 @@ void deleteUser() {
 		updatett << pin[n] << endl;
 	}
 	updatett.close();
-
-	cout << "\t\t\t\tBan da xoa thanh cong nguoi dung." << endl;
-	cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
-	cout << "\t\t\t\t1. Xoa nguoi dung tiep theo. " << endl;
-	cout << "\t\t\t\t2. Quay lai menu. " << endl;
-	cout << "\t\t\t\tChon: ";
-	int a;
-	cin >> a;
-	if(a==1) deleteUser();
-	if(a==2) adminMenu();
+    
+	cout << endl;
+	cout << "\t\t\t\tNguoi dung duoc xoa thanh cong!!!" << endl;
+	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
+	cout << "\t\t\t\t";
+	system("pause");
+    adminMenu();
 }
 
 void adminMenu() {

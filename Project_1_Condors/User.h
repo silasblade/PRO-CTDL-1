@@ -132,8 +132,10 @@ void giaoDienDangNhapUser()
 
         if(khoa==3)
         {
+            cout << endl;
             cout << "\t\t\t\tTai khoan cua ban da bi khoa." << endl;
             cout << "\t\t\t\tBam phim bat ky de quay lai." << endl;
+            cout << "\t\t\t\t";
             system("pause");
             giaoDienDangNhapUser();
         }
@@ -150,8 +152,10 @@ void giaoDienDangNhapUser()
             os << khoa;
             os.close();
 
+            cout << endl;
             cout << "\t\t\t\tBan nhap sai mat khau." << endl;
             cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+            cout << "\t\t\t\t";
             system("pause");
             giaoDienDangNhapUser();
         }

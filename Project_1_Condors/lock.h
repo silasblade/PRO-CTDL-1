@@ -8,11 +8,46 @@ void adminMenu();
 
 void moKhoaTaiKhoan()
 {
+    system("cls");
     cout << "\t\t\t\t**** Mo khoa tai khoan ****" << endl;
     cout << endl;
     cout << "\t\t\t\tNhap ID tai khoan muon mo khoa: ";
     string id;
     cin >> id;
+
+    
+    string user[100];
+    string pin[100];
+    int m=0;
+    ifstream is1("TheTu.txt");
+	getline(is1, user[0]);
+	getline(is1, pin[0]);
+	m++;
+    while(!pin[m-1].empty())
+    {
+        getline(is1, user[m]);
+        getline(is1, pin[m]);
+        m++;
+    }
+    is1.close();
+
+    int checkdel=0;
+	int numdel;
+	for(int k=0; k<m-1; k++)
+	{
+		if(id==user[k]) {checkdel++; numdel=k;}
+	}
+
+    if(checkdel==0)
+	{
+		cout << "\t\t\t\tID khong ton tai." << endl;
+		cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+        cout << "\t\t\t\t";
+		system("pause");
+		moKhoaTaiKhoan();
+	}
+
+    
 
     string tt[10];
     int khoa;
@@ -35,15 +70,11 @@ void moKhoaTaiKhoan()
     os << tt[i] << endl; i++;
     os << khoa << endl;
 
-    cout << "\t\t\t\tTai khoan nay da duoc mo khoa thanh cong!!!" << endl;
-    cout << "\t\t\t\t________________________________" << endl;
-    cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
-    cout << "\t\t\t\t1. Mo khoa tai khoan tiep theo." << endl;
-    cout << "\t\t\t\t2. Ve menu." << endl;
-    cout << "\t\t\t\tNhap: ";
-    int chon;
-    cin >> chon;
-    if(chon==1) moKhoaTaiKhoan();
-    if(chon==2) adminMenu();
+    cout << endl;
+    cout << "\t\t\t\tTai khoan nay da duoc mo khoa!!!" << endl;
+	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
+	cout << "\t\t\t\t";
+	system("pause");
+    adminMenu();
 
 }

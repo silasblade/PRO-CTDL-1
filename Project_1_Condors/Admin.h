@@ -10,10 +10,10 @@ void adminLogin();
 void Pass(string &password){
 	int ch;
 	int i=0;
-    ch=getch();
     while(ch!=13)
     {
-        password.push_back(ch);
+		ch=getch();
+       
         if(ch==8 && i>0)
         {
 		i--;
@@ -21,20 +21,15 @@ void Pass(string &password){
         cout << '\b';
         cout << " ";
         cout << '\b';
+		password.pop_back();
         }
 
-		else if(ch==8 && i==0)
-		{
-			cin.clear();
-		}
-
-        else
+        else if(ch!=8 && ch!=13)
 		{
 		i++;
         cout << "*";
-		}
-        ch=getch();
-		
+		password.push_back(ch);
+		}	
     }
 }
 

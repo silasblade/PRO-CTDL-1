@@ -125,10 +125,31 @@ void addNewUser() {
 		if(id==u[k])
 		{
 			cout << "\t\t\t\tID da ton tai, vui long nhap lai. Nhan Enter de tiep tuc." << endl;
+			cout << "\t\t\t\t";
 			system("pause");
 			addNewUser();
 		}
 	}
+
+	if(id.size()!=14)
+		{
+			cout << "\t\t\t\tID nhap khong dung yeu cau. Bam phim bat ky de nhap lai." << endl;
+			cout << "\t\t\t\t";
+			system("pause");
+			addNewUser();
+		}
+    
+	for(int k=0; k<id.size(); k++)
+	{
+		if(!isdigit(id[k]))
+		{
+			cout << "\t\t\t\tID chi nhap chu so. Vui long nhap lai." << endl;
+			cout << "\t\t\t\t";
+			system("pause");
+			addNewUser();
+		}
+	}
+
 
 	string pin;
 	pin="123456";
@@ -136,9 +157,7 @@ void addNewUser() {
 	string ten;
 	cin.ignore();
 	getline(cin, ten);
-	cout << "\t\t\t\tNhap so tien duoc nap vao ban dau (>=50000 VND): ";
-	string tien;
-	cin >> tien;
+	string tien="50000";
 	string donvi = "VND";
 	int solannhapsai = 0;
 
@@ -155,10 +174,16 @@ void addNewUser() {
 	NewUser << solannhapsai << endl;
     NewUser.close();
 
-	cout << "\t\t\t\tNguoi dung duoc tao thanh cong\n";
-	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
-	system("pause");
-    adminMenu();
+	cout << "\t\t\t\tNguoi dung duoc tao thanh cong\n" << endl;
+	cout << "\t\t\t\t________________________________" << endl;
+	cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
+    cout << "\t\t\t\t1. Them nguoi dung tiep theo." << endl;
+    cout << "\t\t\t\t2. Ve menu." << endl;
+    cout << "\t\t\t\tNhap: ";
+    int chon;
+    cin >> chon;
+    if(chon==1) moKhoaTaiKhoan();
+    if(chon==2) adminMenu();
 }
 
 void deleteUser() {
@@ -224,7 +249,7 @@ void deleteUser() {
 	cout << "\t\t\t\tChon chuc nang tiep theo: " << endl;
 	cout << "\t\t\t\t1. Xoa nguoi dung tiep theo. " << endl;
 	cout << "\t\t\t\t2. Quay lai menu. " << endl;
-	cout << "\t\t\t\tChon:  " << endl;
+	cout << "\t\t\t\tChon: ";
 	int a;
 	cin >> a;
 	if(a==1) deleteUser();

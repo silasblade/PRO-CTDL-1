@@ -10,7 +10,7 @@ void moKhoaTaiKhoan()
 {
     cout << "\t\t\t\t**** Mo khoa tai khoan ****" << endl;
     cout << endl;
-    cout << "\t\t\t\tNhap ID tai khoan muon mo khoa: " << endl;
+    cout << "\t\t\t\tNhap ID tai khoan muon mo khoa: ";
     string id;
     cin >> id;
 

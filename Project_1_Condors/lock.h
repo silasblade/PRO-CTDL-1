@@ -9,13 +9,14 @@ void adminMenu();
 void moKhoaTaiKhoan()
 {
     system("cls");
+    //Giao diện nhập
     cout << "\t\t\t\t**** Mo khoa tai khoan ****" << endl;
     cout << endl;
     cout << "\t\t\t\tNhap ID tai khoan muon mo khoa: ";
     string id;
     cin >> id;
 
-    
+    //Nạp file thẻ từ
     string user[100];
     string pin[100];
     int m=0;
@@ -30,7 +31,8 @@ void moKhoaTaiKhoan()
         m++;
     }
     is1.close();
-
+    
+    //Kiểm tra ID tồn tại
     int checkdel=0;
 	int numdel;
 	for(int k=0; k<m-1; k++)
@@ -47,8 +49,7 @@ void moKhoaTaiKhoan()
 		moKhoaTaiKhoan();
 	}
 
-    
-
+    //Nạp file người dùng
     string tt[10];
     int khoa;
     ifstream is("ID_User/" + id + ".txt");
@@ -59,7 +60,8 @@ void moKhoaTaiKhoan()
     getline(is, tt[i]); i++;
     is >> khoa;
     is.close();
-
+    
+    //Đặt số lần nhập sai trở về 0, cập nhật lại file người dùng
     khoa=0;
     
     i=0;

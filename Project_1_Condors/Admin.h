@@ -7,6 +7,8 @@ using namespace std;
 void moKhoaTaiKhoan();
 void adminMenu();
 void adminLogin();
+
+//Chuyển đổi mật khẩu thành dấu *
 void Pass(string &password){
 	int ch;
 	int i=0;
@@ -35,9 +37,11 @@ void Pass(string &password){
 
 
 
-void listUser() 
+void listUser() //Xuất danh sách người dùng
 {
 	system("cls");
+
+	//Nạp file thẻ từ
 	string user[100];
     string pin[100];
     int i=0;
@@ -52,6 +56,8 @@ void listUser()
         i++;
     }
     is.close();
+
+    //Giao diện xuất tất cả thẻ từ
 	cout << "\t\t\t\t**** Thong tin cac nguoi dung ****" << endl;
 	cout << endl;
 
@@ -69,7 +75,7 @@ void listUser()
 
 }
 
-void listdel() 
+void listdel() //Danh sách người dùng
 {
 	string user[100];
     string pin[100];
@@ -96,9 +102,10 @@ void listdel()
 	}
 }
 
-void addNewUser() {
+void addNewUser() //Thêm người dùng
+{
 	system("cls");
-
+    //Nạp mảng chuỗi các thông tin từ file
     string u[100];
     string p[100];
     int i=0;
@@ -114,7 +121,7 @@ void addNewUser() {
     }
     is.close();
 
-
+    //Nhập ID mới
 	cout << "\t\t\t\t**** Them nguoi dung moi ****" << endl;
 	string id;
 	cout << "\t\t\t\tTao ID (14 chu so): ";
@@ -151,6 +158,7 @@ void addNewUser() {
 	}
 
 
+    //Khởi tạo mã PIN và nhập tên người dùng
 	string pin;
 	pin="123456";
 	cout << "\t\t\t\tNhap ten nguoi dung: ";
@@ -161,11 +169,13 @@ void addNewUser() {
 	string donvi = "VND";
 	int solannhapsai = 0;
 
+    //Cập nhật thẻ từ
     ofstream TheTu("TheTu.txt", ios_base::app);
 	TheTu << id << endl;
 	TheTu << pin << endl;
     TheTu.close();
 
+    //Lưu dữ liệu người dùng
 	ofstream NewUser("ID_User/" + id + ".txt");
 	NewUser << id << endl;
 	NewUser << ten << endl;
@@ -173,7 +183,8 @@ void addNewUser() {
 	NewUser << donvi << endl;
 	NewUser << solannhapsai << endl;
     NewUser.close();
-
+    
+	//Lưu dữ liệu lịch sử
     time_t now = time(0);
     char* dt = ctime(&now);
     string lsmoi="LichSu";
@@ -187,6 +198,7 @@ void addNewUser() {
 	newLS << "\n";
 	newLS.close();
 
+    //Trở về sau khi hoàn tất sử dụng
     cout << endl;
 	cout << "\t\t\t\tNguoi dung duoc tao thanh cong!!!" << endl;
 	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
@@ -195,10 +207,13 @@ void addNewUser() {
     adminMenu();
 }
 
-void deleteUser() {
+void deleteUser() //Xóa người dùng
+{
 	system("cls");
+	//Hiện danh sách
 	listdel();
-
+    
+	//Nạp dữ liệu thẻ từ
     string user[100];
     string pin[100];
     int i=0;
@@ -214,7 +229,7 @@ void deleteUser() {
     }
     is.close();
 
-
+    //Nhập ID cần xóa và các trường hợp nhập sai
     int checkdel=0;
 	int numdel;
 	string id;
@@ -233,6 +248,7 @@ void deleteUser() {
 		deleteUser();
 	}
     
+	//Xóa file người dùng và file lịch sử
 	string addres="ID_User/";
 	addres=addres+id+".txt";
 	string lichsu="ID_User/LichSu";
@@ -242,6 +258,7 @@ void deleteUser() {
 	remove(c);
     remove(d);
 	
+	//Cập nhật lại thẻ từ
 	ofstream updatett("TheTu.txt");
 	for(int j=0; j < numdel; j++)
     {
@@ -256,6 +273,7 @@ void deleteUser() {
 	}
 	updatett.close();
     
+	//Kết thúc chức năng
 	cout << endl;
 	cout << "\t\t\t\tNguoi dung duoc xoa thanh cong!!!" << endl;
 	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
@@ -264,7 +282,8 @@ void deleteUser() {
     adminMenu();
 }
 
-void adminMenu() {
+void adminMenu() //Menu dành cho admin
+{
 	system("cls");
 	cout << "\t\t\t\t************************* Menu ************************\n";
 	cout << "\t \t \t\t\t\t1. Xem danh sach tai khoan.\n";
@@ -292,9 +311,11 @@ void adminMenu() {
 	}
 }
 
-void adminLogin() 
+void adminLogin() //Màn hình đăng nhập admin
 {
 	system("cls");
+
+	//Nạp file admin
 	string user[100];
     string pin[100];
     int i=0;
@@ -320,7 +341,7 @@ void adminLogin()
 	cout << "\n\t\t\t\tPassword: ";
 	
     Pass(password);
-
+    //Xác nhận mật khẩu đúng
     for(int j=0; j<i; j++)
     {
        if(id==user[j] && password==pin[j]) adminMenu();

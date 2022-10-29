@@ -4,10 +4,13 @@
 using namespace std;
 
 void giaoDienMenu();
-void xemtt()
+
+void xemtt() // Xem thông tin thẻ từ
 {
   system("cls");
   cout  << "\t\t\t\t\t**** Thong tin nguoi dung ****" << endl;
+
+  //Nạp file người dùng
   ifstream is("ID_User/" + currentuser +".txt");
   string x[5];
   for(int i=0; i<4; i++)
@@ -15,11 +18,13 @@ void xemtt()
     getline(is, x[i]);
   }
   is.close();
-
+  
+  //Hiển thị các thông tin trong file
   cout << "\t\t\t\tID: " << x[0] << endl;
   cout << "\t\t\t\tTen nguoi dung: " << x[1] << endl;
   cout << "\t\t\t\tSo du: " << x[2] << " " << x[3] << endl;
   cout << endl;
+
   cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
   cout << "\t\t\t\t";
   system("pause");
@@ -30,8 +35,9 @@ void xemgd()
 {
   system("cls");
   cout  << "\t\t\t\t\t**** Thong tin giao dich ****" << endl;
+  
+  //Nạp file lịch sử giao dịch
   string file="LichSu";
-
   file=file+currentuser;
   ifstream is("ID_User/" + file +".txt");
   string x[100];
@@ -47,6 +53,7 @@ void xemgd()
   }
   is.close();
 
+  //Xuất các thông tin trong file
   for(int j=0; j<i; j++)
   {
     cout << "\t\t\t\t" << x[j] << endl;
@@ -61,6 +68,8 @@ void xemgd()
 void doimapin()
 {
   system("cls");
+
+  //Nạp file thẻ từ
   ifstream is;
   string id[100];
   string pin[100];
@@ -76,13 +85,15 @@ void doimapin()
     i++;
   }
   is.close();
+
+  //Nhập mã pin cần đổi
   cout << "\t\t\t\t**** Doi maPIN ****" << endl;
   cout << "\t\t\t\tNhap ma pin moi (6 so): ";
   string newpin;
   string newpinconfirm;
   cin >> newpin;
   
-
+//Điều kiện nhập mã PIN
   if(newpin.size()!=6)
   {
     cout << "\t\t\t\tBan nhap khong dung." << endl;
@@ -92,6 +103,7 @@ void doimapin()
     doimapin();
   }
 
+  //Kiểm tra nếu người dùng nhập sai
   int checkdigit=0;
   for(int o=0; o<newpin.size(); o++)
   {
@@ -105,10 +117,12 @@ void doimapin()
     system("pause");
     doimapin();
   }
-
+  
+  //Nhập lại
   cout << "\t\t\t\tNhap lai ma PIN moi: ";
   cin >> newpinconfirm;
 
+  //Kiểm tra PIN nhập đúng
   if(newpin==newpinconfirm)
   {
       for(int j=0; j<i; j++)

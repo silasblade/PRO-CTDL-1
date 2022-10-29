@@ -82,6 +82,7 @@ bool login_validation(string ID, string pass)
 void giaoDienDangNhapUser() 
 {
     system("cls");
+    //Nạp file thẻ từ
 	string id[100];
     string pin[100];
     int i=0;
@@ -97,14 +98,16 @@ void giaoDienDangNhapUser()
         i++;
     }
     is.close();
-
-        string ID, PIN;
+ 
+        string ID, PIN; //Giao diện đăng nhập
         cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
         cout << "\t\t\t\t*             DANG NHAP USER            *\n";
         cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
         cout << "\t\t\t\tID : "; cin >> ID;
         int dem=0;
         int sodem=0;
+
+        //Kiểm tra ID nhập có tồn tại không
         for(int j=0; j<i-1;j++)
         {
               if(ID==id[j]) {dem++; sodem=j;}
@@ -119,6 +122,7 @@ void giaoDienDangNhapUser()
             giaoDienDangNhapUser();
         }
 
+        //ID tồn tại, nạp file người dùng
         ifstream is2("ID_User/" + ID + ".txt");
             string tt[10];
             int khoa;
@@ -128,9 +132,10 @@ void giaoDienDangNhapUser()
             }
             is2 >> khoa;
             is2.close();
-
+       
         cout << "\t\t\t\tPIN : "; Pass(PIN);
-
+        
+        //Kiểm tra tài khoản bị khóa
         if(khoa==3)
         {
             cout << endl;
@@ -142,7 +147,7 @@ void giaoDienDangNhapUser()
             giaoDienDangNhapUser();
         }
 
-
+        //Kiểm tra PIN nhập đúng, nhập sai thì sẽ ghi nhận vào file người dùng
         if(pin[sodem]!=PIN)
         {
             khoa++;
@@ -175,7 +180,8 @@ void Thoat() {
 
 #include "ruttien.h"
 
-void giaoDienMenu() {
+void giaoDienMenu() //Giao diện Menu
+{
     system("cls");
     cout << "\t\t\t\t";
     cout << "***************MENU*****************\n";

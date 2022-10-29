@@ -9,6 +9,7 @@ using namespace std;
 
 int main() 
 {
+	//Chỉnh kích cỡ chữ
 CONSOLE_FONT_INFOEX cfi;
 cfi.cbSize = sizeof(cfi);
 cfi.nFont = 0;
@@ -19,6 +20,7 @@ cfi.FontWeight = FW_NORMAL;
 std::wcscpy(cfi.FaceName, L"Consolas"); 
 SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 
+//Chỉnh khoảng cách và dấu thập phân
 cout << fixed << setw(30);
 cout << fixed << setprecision(2);
 adminLogin();

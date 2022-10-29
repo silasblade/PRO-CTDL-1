@@ -127,6 +127,7 @@ void doimapin()
     setcolor(12);
     cout << "\t\t\t\tMa PIN chi duoc nhap so." << endl;
     cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+    cout << "\t\t\t\t";
     system("pause");
     doimapin();
   }

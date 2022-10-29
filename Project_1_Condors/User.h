@@ -100,9 +100,11 @@ void giaoDienDangNhapUser()
     is.close();
  
         string ID, PIN; //Giao diện đăng nhập
+        setcolor(11);
         cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
         cout << "\t\t\t\t*             DANG NHAP USER            *\n";
         cout << "\t\t\t\t* * * * * * * * * * * * * * * * * * * * *\n";
+        setcolor(14);
         cout << "\t\t\t\tID : "; cin >> ID;
         int dem=0;
         int sodem=0;
@@ -115,6 +117,7 @@ void giaoDienDangNhapUser()
 
         if (dem==0)
         {
+            setcolor(12);
             cout << "\t\t\t\tID nguoi dung khong ton tai." << endl;
             cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
             cout << "\t\t\t\t";
@@ -139,6 +142,7 @@ void giaoDienDangNhapUser()
         if(khoa==3)
         {
             cout << endl;
+            setcolor(13);
             cout << "\t\t\t\tTai khoan cua ban da bi khoa." << endl;
             cout << "\t\t\t\tBam phim bat ky de ket thuc." << endl;
             cout << "\t\t\t\t";
@@ -160,6 +164,7 @@ void giaoDienDangNhapUser()
             os.close();
 
             cout << endl;
+            setcolor(12);
             cout << "\t\t\t\tBan nhap sai mat khau." << endl;
             cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
             cout << "\t\t\t\t";
@@ -184,14 +189,18 @@ void giaoDienMenu() //Giao diện Menu
 {
     system("cls");
     cout << "\t\t\t\t";
+    setcolor(11);
     cout << "***************MENU*****************\n";
+    setcolor(14);
     cout << "\t\t\t\t      1. Xem thong tin tai khoan\n";
     cout << "\t\t\t\t      2. Rut tien\n";
     cout << "\t\t\t\t      3. Chuyen tien\n";
     cout << "\t\t\t\t      4. Xem noi dung giao dich\n";
     cout << "\t\t\t\t      5. Doi ma pin\n";
     cout << "\t\t\t\t      6. Thoat\n";
+    setcolor(11);
     cout << "\t\t\t\t************************************\n";
+    setcolor(9);
     cout << "\t\t\t\tChon chuc nang: "; int a; cin >> a;
     if (a == 1) {
         xemtt();

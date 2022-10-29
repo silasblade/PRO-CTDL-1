@@ -4,12 +4,21 @@
 
 using namespace std;
 
+
+void setcolor(unsigned short color)                 //The function that you'll use to
+{                                                   //set the colour
+    HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hcon,color);
+}
+
 void moKhoaTaiKhoan();
 void adminMenu();
 void adminLogin();
 
 //Chuyển đổi mật khẩu thành dấu *
-void Pass(string &password){
+void Pass(string &password)
+{
+	setcolor(14);
 	int ch;
 	int i=0;
     while(ch!=13)
@@ -58,9 +67,11 @@ void listUser() //Xuất danh sách người dùng
     is.close();
 
     //Giao diện xuất tất cả thẻ từ
+	setcolor(11);
 	cout << "\t\t\t\t**** Thong tin cac nguoi dung ****" << endl;
 	cout << endl;
-
+    
+	setcolor(14);
 	for(int k=1; k<i; k++)
 	{
 		cout << "\t\t\t\tUser " << k << "  :" << user[k-1] << endl;
@@ -68,6 +79,8 @@ void listUser() //Xuất danh sách người dùng
 		cout << endl;
 	}
 
+
+    setcolor(10);
 	cout << "\t\t\t\tNhan phim bat ky de quay lai menu." << endl;
 	cout << "\t\t\t\t";
 	system("pause");
@@ -91,9 +104,11 @@ void listdel() //Danh sách người dùng
         i++;
     }
     is.close();
+	setcolor(11);
 	cout << "\t\t\t\tDanh sach nguoi dung: " << endl;
 	cout << endl;
-
+    
+	setcolor(14);
 	for(int k=1; k<i; k++)
 	{
 		cout << "\t\t\t\tUser " << k << "  :" << user[k-1] << endl;
@@ -122,15 +137,18 @@ void addNewUser() //Thêm người dùng
     is.close();
 
     //Nhập ID mới
+	setcolor(11);
 	cout << "\t\t\t\t**** Them nguoi dung moi ****" << endl;
 	string id;
+	setcolor(14);
 	cout << "\t\t\t\tTao ID (14 chu so): ";
 	cin >> id;
     
     for(int k=0; k<i-1; k++)
 	{
 		if(id==u[k])
-		{
+		{    
+			setcolor(12);
 			cout << "\t\t\t\tID da ton tai, vui long nhap lai. Nhan Enter de tiep tuc." << endl;
 			cout << "\t\t\t\t";
 			system("pause");
@@ -140,6 +158,7 @@ void addNewUser() //Thêm người dùng
 
 	if(id.size()!=14)
 		{
+			setcolor(12);
 			cout << "\t\t\t\tID nhap khong dung yeu cau. Bam phim bat ky de nhap lai." << endl;
 			cout << "\t\t\t\t";
 			system("pause");
@@ -150,6 +169,7 @@ void addNewUser() //Thêm người dùng
 	{
 		if(!isdigit(id[k]))
 		{
+			setcolor(12);
 			cout << "\t\t\t\tID chi nhap chu so. Vui long nhap lai." << endl;
 			cout << "\t\t\t\t";
 			system("pause");
@@ -200,6 +220,7 @@ void addNewUser() //Thêm người dùng
 
     //Trở về sau khi hoàn tất sử dụng
     cout << endl;
+	setcolor(10);
 	cout << "\t\t\t\tNguoi dung duoc tao thanh cong!!!" << endl;
 	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
 	cout << "\t\t\t\t";
@@ -212,7 +233,6 @@ void deleteUser() //Xóa người dùng
 	system("cls");
 	//Hiện danh sách
 	listdel();
-    
 	//Nạp dữ liệu thẻ từ
     string user[100];
     string pin[100];
@@ -233,6 +253,7 @@ void deleteUser() //Xóa người dùng
     int checkdel=0;
 	int numdel;
 	string id;
+	setcolor(11);
 	cout << "\t\t\t\tNhap id can xoa: "; cin >> id;
 	for(int k=0; k<i-1; k++)
 	{
@@ -241,6 +262,7 @@ void deleteUser() //Xóa người dùng
 
     if(checkdel==0)
 	{
+		setcolor(12);
 		cout << "\t\t\t\tID ban nhap khong dung." << endl;
 		cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
 		cout << "\t\t\t\t";
@@ -275,6 +297,7 @@ void deleteUser() //Xóa người dùng
     
 	//Kết thúc chức năng
 	cout << endl;
+	setcolor(10);
 	cout << "\t\t\t\tNguoi dung duoc xoa thanh cong!!!" << endl;
 	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
 	cout << "\t\t\t\t";
@@ -285,14 +308,18 @@ void deleteUser() //Xóa người dùng
 void adminMenu() //Menu dành cho admin
 {
 	system("cls");
+	setcolor(11);
 	cout << "\t\t\t\t************************* Menu ************************\n";
+	setcolor(14);
 	cout << "\t \t \t\t\t\t1. Xem danh sach tai khoan.\n";
 	cout << "\t \t \t\t\t\t2. Them tai khoan.\n";
 	cout << "\t \t \t\t\t\t3. Xoa tai khoan.\n";
 	cout << "\t \t \t\t\t\t4. Mo khoa tai khoan.\n";
 	cout << "\t \t \t\t\t\t5. Thoat.\n";
+	setcolor(11);
 	cout << "\t\t\t\t*******************************************************\n";
-	cout << "\t \t\t\t\t\t Enter your choice: ";
+	setcolor(9);
+	cout << "\t \t\t\t\t\t Chon chuc nang: ";
 	int n;
 	cin >> n;
 	const int delay = 1000000*2;
@@ -314,7 +341,7 @@ void adminMenu() //Menu dành cho admin
 void adminLogin() //Màn hình đăng nhập admin
 {
 	system("cls");
-
+    setcolor(11);
 	//Nạp file admin
 	string user[100];
     string pin[100];
@@ -337,8 +364,10 @@ void adminLogin() //Màn hình đăng nhập admin
 	cout << "\t\t\t\t**************************************************\n";
 	cout << "\t\t\t\t*\t\t  DANG NHAP ADMIN\t\t *\n";
 	cout << "\t\t\t\t**************************************************\n";
+	setcolor(14);
 	cout << "\n\t\t\t\tUser: "; cin >> id;
 	cout << "\n\t\t\t\tPassword: ";
+	setcolor(11);
 	
     Pass(password);
     //Xác nhận mật khẩu đúng
@@ -348,6 +377,7 @@ void adminLogin() //Màn hình đăng nhập admin
     }
 
 	cout << endl;
+	setcolor(12);
 	cout << "\t\t\t\tNhap sai mat khau hoac tai khoan, vui long nhap lai." << endl;
 	cout << "\t\t\t\t";
 	system("pause");

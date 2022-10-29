@@ -5,13 +5,16 @@
 using namespace std;
 
 void adminMenu();
+void setcolor(unsigned short color);
 
 void moKhoaTaiKhoan()
 {
     system("cls");
     //Giao diện nhập
+    setcolor(11);
     cout << "\t\t\t\t**** Mo khoa tai khoan ****" << endl;
     cout << endl;
+    setcolor(14);
     cout << "\t\t\t\tNhap ID tai khoan muon mo khoa: ";
     string id;
     cin >> id;
@@ -42,6 +45,7 @@ void moKhoaTaiKhoan()
 
     if(checkdel==0)
 	{
+        setcolor(12);
 		cout << "\t\t\t\tID khong ton tai." << endl;
 		cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
         cout << "\t\t\t\t";
@@ -73,6 +77,7 @@ void moKhoaTaiKhoan()
     os << khoa << endl;
 
     cout << endl;
+    setcolor(10);
     cout << "\t\t\t\tTai khoan nay da duoc mo khoa!!!" << endl;
 	cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
 	cout << "\t\t\t\t";

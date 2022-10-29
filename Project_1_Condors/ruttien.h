@@ -52,11 +52,14 @@ void ruttien()
     cre << x[3];
     double credit;
     cre >> credit;
+    setcolor(6);
+    cout << endl;
     cout << "\t\t\t\tSo du tai khoan cua ban la: " << x[3] << " " << x[4] << endl;
 
     //Dieu kien rut tien
     if(credit < 100000 && x[4]=="VND")
     {
+    setcolor(12);
     cout << "\t\t\t\tTai khoan cua ban khong du de rut" << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
     cout << "\t\t\t\t";
@@ -65,17 +68,21 @@ void ruttien()
     }
 
     //Thuc hien rut tien
+    cout << endl;
+    setcolor(14);
     cout << "\t\t\t\tNhap so tien muon rut: ";
     double rut=0;
     cin >> rut;
     long tienle=rut;
     if(tienle % 50000 !=0 || rut <50000 || rut > credit-50000)
     {
+        setcolor(12);
         cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan Enter roi tien hanh nhap lai." << endl;
         cout << "\t\t\t\t";
         system("pause");
         ruttien();
     }
+    setcolor(2);
     cout << "\t\t\t\tBan da rut " << rut << " " << x[4] << " khoi tai khoan." << endl;
     double conlai;
     conlai=credit - rut;
@@ -94,6 +101,7 @@ void ruttien()
     os.close();
    
    cout << endl;
+   setcolor(10);
    cout << "\t\t\t\tBan da rut tien thanh cong." << endl;
    cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
    cout << "\t\t\t\t";
@@ -119,11 +127,15 @@ void chuyentien()
     cre << x[3];
     double credit;
     cre >> credit;
+    setcolor(6);
+    cout << endl;
     cout << "\t\t\t\tSo du tai khoan cua ban la: " << x[3] << " " << x[4] << endl;
+    cout << endl;
 
     //Dieu kien rut tien
     if(credit < 100000 && x[4]=="VND")
     {
+    setcolor(12);
     cout << "\t\t\t\tTai khoan cua ban khong du de chuyen." << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
     cout << "\t\t\t\t";
@@ -132,12 +144,14 @@ void chuyentien()
     }
 
     //Nhap ID nguoi can chuyen
+    setcolor(14);
     cout << "\t\t\t\tNhap ID nguoi ban muon chuyen tien: ";
     string tranuser;
     cin >> tranuser;
 
     if(currentuser==tranuser)
     {
+    setcolor(12);
     cout << "\t\t\t\tBan khong the tu chuyen tien cho chinh minh." << endl;
     cout << "\t\t\t\tVui long nhap lai." << endl;
     cout << "\t\t\t\t";
@@ -155,6 +169,7 @@ void chuyentien()
     } 
     else
     {
+        setcolor(12);
     cout << "\t\t\t\tID khong ton tai." << endl;
     cout << "\t\t\t\tVui long nhap lai." << endl;
     cout << "\t\t\t\t";
@@ -182,11 +197,13 @@ void chuyentien()
     long tienchuyen=chuyen;
     if(tienchuyen % 50000 !=0 || chuyen <50000 || chuyen > credit-50000)
     {
-        cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan Enter roi tien hanh nhap lai." << endl;
+        setcolor(12);
+        cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan phim bat ky roi tien hanh nhap lai." << endl;
         system("pause");
         chuyentien();
     }
-
+    
+    setcolor(2);
     cout << "\t\t\t\tBan da chuyen " << chuyen << " " << x[4] << " toi cho " << y[2] << endl;
     double conlai;
     conlai=credit - chuyen;
@@ -220,6 +237,7 @@ void chuyentien()
 
 
    cout << endl;
+   setcolor(10);
    cout << "\t\t\t\tBan da chuyen tien thanh cong." << endl;
    cout << "\t\t\t\tBam phim bat ky de tro lai menu." << endl;
    cout << "\t\t\t\t";

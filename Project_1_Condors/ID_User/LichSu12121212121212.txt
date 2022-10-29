@@ -10,3 +10,15 @@ admin
 +500000000 VND
 <Nhan tien>
 
+Sun Oct 30 02:09:08 2022
+12121212121212
+Le Van Vu
+-50000 VND
+<Rut tien>
+
+Sun Oct 30 02:09:31 2022
+13131313131313
+Yoshikage Kira
+-5900000 VND
+<Chuyen tien>
+

@@ -228,6 +228,7 @@ void deleteUser() {
 	{
 		cout << "\t\t\t\tID ban nhap khong dung." << endl;
 		cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+		cout << "\t\t\t\t";
 		system("pause");
 		deleteUser();
 	}

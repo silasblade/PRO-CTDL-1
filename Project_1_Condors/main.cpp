@@ -10,15 +10,16 @@ using namespace std;
 int main() 
 {
 
-	static CONSOLE_FONT_INFOEX  fontex;
-    fontex.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    GetCurrentConsoleFontEx(hOut, 0, &fontex);
-    fontex.FontWeight = 400;
-    fontex.dwFontSize.X = 20;
-    fontex.dwFontSize.Y = 20;
+CONSOLE_FONT_INFOEX cfi;
+cfi.cbSize = sizeof(cfi);
+cfi.nFont = 0;
+cfi.dwFontSize.X = 0;                  
+cfi.dwFontSize.Y = 24;              
+cfi.FontFamily = FF_DONTCARE;
+cfi.FontWeight = FW_NORMAL;
+std::wcscpy(cfi.FaceName, L"Consolas"); 
+SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 
-    SetCurrentConsoleFontEx(hOut, 2, &fontex);
 cout << fixed << setw(30);
 cout << fixed << setprecision(2);
 string chon;

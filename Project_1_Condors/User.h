@@ -114,6 +114,7 @@ void giaoDienDangNhapUser()
         {
             cout << "\t\t\t\tID nguoi dung khong ton tai." << endl;
             cout << "\t\t\t\tBam phim bat ky de nhap lai." << endl;
+            cout << "\t\t\t\t";
             system("pause");
             giaoDienDangNhapUser();
         }
@@ -134,9 +135,10 @@ void giaoDienDangNhapUser()
         {
             cout << endl;
             cout << "\t\t\t\tTai khoan cua ban da bi khoa." << endl;
-            cout << "\t\t\t\tBam phim bat ky de quay lai." << endl;
+            cout << "\t\t\t\tBam phim bat ky de ket thuc." << endl;
             cout << "\t\t\t\t";
             system("pause");
+            exit(0);
             giaoDienDangNhapUser();
         }
 
@@ -163,36 +165,6 @@ void giaoDienDangNhapUser()
         currentuser=ID;
         giaoDienMenu();
 }
-
-
-
-// UserInfo arrInfo[10000];
-// void layDuLieuThongTinUser() {
-//     ifstream Info;
-//     Info.open("ID.txt");
-//     string ID;
-//     string name;
-//     int money;
-//     string type;
-//     while(!Info.eof()) {
-//         Info >> ID;
-//         getline(Info, name);
-//         // Info.ignore();
-//         Info >> money;
-//         Info >> type;
-//         UserInfo p(ID, name, money, type);
-//         arrInfo[u] = p;
-//         u++;
-//     }
-//     Info.close();
-// }
-// void xemThongTinUser() {
-//     layDuLieuThongTinUser();
-//     for (int i = 0; i < u; ++i) {
-//         cout << arrInfo[i] << endl;
-//     }
-// }
-
 
 
 

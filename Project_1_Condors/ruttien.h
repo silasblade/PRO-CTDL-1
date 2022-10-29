@@ -25,9 +25,9 @@ void lsgd(string idgd, double sotien, string phuongthuc, string ten, string donv
         os << idnggd << endl;
         os << ten << endl;
         if(phuongthuc=="Rut tien" || phuongthuc=="Chuyen tien")
-        os << "-" << sotien << " " << donvi << endl;
+        os << "-" << fixed << setprecision(0) << sotien << " " << donvi << endl;
         if(phuongthuc=="Nhan tien")
-        os << "+" << sotien << " " << donvi << endl;
+        os << "+" << fixed << setprecision(0) << sotien << " " << donvi << endl;
         os << "<" << phuongthuc << ">" << endl;
         os << "\n";
     }
@@ -36,8 +36,8 @@ void lsgd(string idgd, double sotien, string phuongthuc, string ten, string donv
 
 void ruttien()
 {
-    cout << fixed << setprecision(0);
     system("cls");
+    cout << fixed << setprecision(0);
 
     //Nhap file lay cac thong tin nguoi dung de xuat so du hien tai
     string file="ID_User/";
@@ -64,21 +64,12 @@ void ruttien()
     giaoDienMenu();
     }
 
-    if(credit < 2.1 && x[4]=="USD")
-    {
-    cout << "\t\t\t\tTai khoan cua ban khong du de rut" << endl;
-    cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
-    cout << "\t\t\t\t";
-    system("pause");
-    giaoDienMenu();
-    }
-
     //Thuc hien rut tien
     cout << "\t\t\t\tNhap so tien muon rut: ";
     double rut=0;
     cin >> rut;
     long tienle=rut;
-    if(tienle % 50000 !=0 || rut <50000)
+    if(tienle % 50000 !=0 || rut <50000 || rut > credit-50000)
     {
         cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan Enter roi tien hanh nhap lai." << endl;
         cout << "\t\t\t\t";
@@ -89,7 +80,7 @@ void ruttien()
     double conlai;
     conlai=credit - rut;
     stringstream con;
-    con << conlai;
+    con << fixed << setprecision(0) << conlai;
     lsgd(currentuser, rut, "Rut tien", x[2], x[4], currentuser);
     con >> x[3];
     cout << "\t\t\t\tSo tien con lai trong tai khoan la: " << x[3] <<  " " << x[4] << endl;
@@ -112,8 +103,8 @@ void ruttien()
 
 void chuyentien()
 {
-    cout << fixed << setprecision(0);
     system("cls");
+    cout << fixed << setprecision(0);
 
     //Nhap file lay cac thong tin nguoi dung de xuat so du hien tai
     string file="ID_User/";
@@ -135,15 +126,6 @@ void chuyentien()
     {
     cout << "\t\t\t\tTai khoan cua ban khong du de chuyen." << endl;
     cout << "\t\t\t\tNhan phim bat ky de tro lai menu." << endl;
-    cout << "\t\t\t\t";
-    system("pause");
-    giaoDienMenu();
-    }
-
-    if(credit < 2.1 && x[4]=="USD")
-    {
-    cout << "\t\t\t\tTai khoan cua ban khong du de chuyen" << endl;
-    cout << "\t\t\t\tNhan phim bat ky de tro lai menu" << endl;
     cout << "\t\t\t\t";
     system("pause");
     giaoDienMenu();
@@ -198,7 +180,7 @@ void chuyentien()
     double chuyen=0;
     cin >> chuyen;
     long tienchuyen=chuyen;
-    if(tienchuyen % 50000 !=0 || chuyen <50000)
+    if(tienchuyen % 50000 !=0 || chuyen <50000 || chuyen > credit-50000)
     {
         cout << "\t\t\t\tSo tien ban nhap khong hop le. Vui long nhan Enter roi tien hanh nhap lai." << endl;
         system("pause");
@@ -211,9 +193,9 @@ void chuyentien()
     double tiennhan;
     tiennhan=nhantien + chuyen;
     stringstream con;
-    con << conlai;
+    con << fixed << setprecision(0) << conlai;
     stringstream nhan;
-    nhan << tiennhan;
+    nhan << fixed << setprecision(0) << tiennhan;
     lsgd(currentuser, chuyen, "Chuyen tien", y[2], x[4], tranuser);
     lsgd(tranuser, chuyen, "Nhan tien", x[2], y[4], currentuser);
 

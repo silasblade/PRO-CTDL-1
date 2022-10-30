@@ -5,8 +5,8 @@
 using namespace std;
 
 
-void setcolor(unsigned short color)                 //The function that you'll use to
-{                                                   //set the colour
+void setcolor(unsigned short color)                 //Hàm đổi màu
+{                                                  
     HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hcon,color);
 }

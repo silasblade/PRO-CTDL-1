@@ -102,7 +102,8 @@ void doimapin()
   cout << "\t\t\t\tNhap ma pin moi (6 so): ";
   string newpin;
   string newpinconfirm;
-  cin >> newpin;
+  Pass(newpin);
+  cout << endl;
   
 //Điều kiện nhập mã PIN
   if(newpin.size()!=6)
@@ -134,7 +135,8 @@ void doimapin()
   
   //Nhập lại
   cout << "\t\t\t\tNhap lai ma PIN moi: ";
-  cin >> newpinconfirm;
+  Pass(newpinconfirm);
+  cout << endl;
 
   //Kiểm tra PIN nhập đúng
   if(newpin==newpinconfirm)

@@ -190,7 +190,7 @@ void chuyentien()
     double nhantien;
     trancre >> nhantien;
 
-    //Thuc hien rut tien
+    //Thuc hien chuyen tien
     cout << "\t\t\t\tNhap so tien muon chuyen: ";
     double chuyen=0;
     cin >> chuyen;
